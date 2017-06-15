@@ -1,0 +1,25 @@
+Administrator panel: 
+
+Views/components:
+
+-login
+
+(if I'll have time, haha)
+-places list:
+	-your places with button
+	-all places in your city 
+
+(or details for 1. place in sb's list)
+-places details:
+	-table with: email, date, time (how long), edit, X to remove reservation
+	-multiple inputs to add/edit reservation with button
+
+
+Routing: 
+- login
+- all places ()
+- place details
+
+Must have:
+- Service
+- ngOnInit
