@@ -23,3 +23,5 @@ Routing:
 Must have:
 - Service
 - ngOnInit
+- dependency injection
+- online api via http
