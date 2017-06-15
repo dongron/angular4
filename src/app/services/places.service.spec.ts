@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { PlacesServiceService } from './places-service.service';
+import { PlacesServiceService } from './places.service';
 
 describe('PlacesServiceService', () => {
   beforeEach(() => {
