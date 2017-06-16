@@ -7,13 +7,13 @@
   </h1>
 
   <md-input-container class="input-full-width">
-    <input mdInput class="" placeholder="email" value="" type="email">
+    <input mdInput class="" placeholder="email" value="" type="email" ngModel="loginInput">
   </md-input-container>
   <md-input-container class="input-full-width">
-    <input mdInput placeholder="password" value="" type="password">
+    <input mdInput placeholder="password" value="" type="password" ngModel="passwordInput">
   </md-input-container>
 
-  <button md-raised-button>
+  <button md-raised-button (click)="navigateToDetails()">
     Log in
     <!--<md-icon>done</md-icon>-->
   </button>
