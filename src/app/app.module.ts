@@ -8,7 +8,11 @@ import {PlacesDetailsComponent} from './componenets/places-details/places-detail
 import {PlacesListComponent} from './componenets/places-list/places-list.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule, MdToolbarModule, MdButtonModule, MdInputModule} from '@angular/material';
-import { NotFoundComponent } from './componenets/not-found/not-found.component';
+import {NotFoundComponent} from './componenets/not-found/not-found.component';
+
+import {LoginService} from './services/login.service';
+import {PlacesService} from './services/places.service';
+import {PlaceDetailsService} from './services/place-details.service';
 
 const appRoutes: Routes = [
   {
@@ -55,7 +59,11 @@ const appRoutes: Routes = [
     MdButtonModule,
     MdInputModule
   ],
-  providers: [],
+  providers: [
+    LoginService,
+    PlacesService,
+    PlaceDetailsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
