@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {User} from '../../models/user';
+import {LoginService} from '../../services/login.service';
+import {PlacesService} from '../../services/places.service';
+import {Place} from "../../models/place";
 
 @Component({
   selector: 'app-places-list',
@@ -7,14 +11,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlacesListComponent implements OnInit {
 
-  placesList;
+  allPlaces: Place[];
+  allPlacesList;
+  userPlacesList = [];
+  userData: User;
 
-  constructor() { }
+  constructor(private loginService: LoginService, private placesService: PlacesService) {
+  }
 
   ngOnInit() {
-
-    this.placesList = [];
-    this.placesList.push({"name": "test","date":"21/11/11"});
+    const user = this.userData = this.loginService.getUser();
+    this.placesService.getAllPlaces().subscribe(
+      (data) => {
+        this.allPlaces = data.json();
+        const results = Object.keys(data.json()).map(function (e) {
+          return data.json()[e];
+        });
+        this.allPlacesList = results;
+        for (const obj of results) {
+          this.userPlacesList.push(obj);
+        }
+      }
+    );
+    // this.userPlacesList = this.placesService.getUsersPlaces(this.userData.email);
+    console.log()
+    // this.placesList.push({"name": "test", "date": "21/11/11"});
   }
 
 }
