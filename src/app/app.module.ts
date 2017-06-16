@@ -6,7 +6,7 @@ import { LoginComponent } from './componenets/login/login.component';
 import { PlacesDetailsComponent } from './componenets/places-details/places-details.component';
 import { PlacesListComponent } from './componenets/places-list/places-list.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MaterialModule, MdToolbarModule, MdButtonModule} from '@angular/material';
+import {MaterialModule, MdToolbarModule, MdButtonModule, MdInputModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import {MaterialModule, MdToolbarModule, MdButtonModule} from '@angular/material
     BrowserAnimationsModule,
     MaterialModule,
     MdToolbarModule,
-    MdButtonModule
+    MdButtonModule,
+    MdInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
