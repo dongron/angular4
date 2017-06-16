@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
         (data) => {
           this.user = data.json();
           if (passwordValue === this.user.password) {
+            this.loginService.setUser(this.user);
             this._navigate();
           } else {
             this._showError();
