@@ -12,7 +12,7 @@
   </md-input-container>
   <md-input-container class="input-full-width">
     <input mdInput placeholder="password" value="" type="password"
-           #passwordInput (keyup.enter)="_authenticateUser()" required>
+           #passwordInput (keyup.enter)="_authenticateUser(loginInput.value, passwordInput.value)" required>
   </md-input-container>
   <h4 class="error"  *ngIf="isError">
     Type correct login and password!
