@@ -5,4 +5,9 @@ export class LoginService {
 
   constructor() { }
 
+  getUserForEmail() {
+    return 0;
+  }
+
+
 }

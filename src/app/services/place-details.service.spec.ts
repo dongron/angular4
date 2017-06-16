@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { PlaceDetailsServiceService } from './place-details.service';
+import { PlaceDetailsService } from './place-details.service';
 
-describe('PlaceDetailsServiceService', () => {
+describe('PlaceDetailsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [PlaceDetailsServiceService]
+      providers: [PlaceDetailsService]
     });
   });
 
-  it('should be created', inject([PlaceDetailsServiceService], (service: PlaceDetailsServiceService) => {
+  it('should be created', inject([PlaceDetailsService], (service: PlaceDetailsService) => {
     expect(service).toBeTruthy();
   }));
 });
