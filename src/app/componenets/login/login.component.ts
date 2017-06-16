@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {LoginService} from '../../services/login.service';
 import {MdDialog, MdDialogRef} from '@angular/material';
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import {MdDialog, MdDialogRef} from '@angular/material';
 export class LoginComponent implements OnInit {
 
   isError;
+  user: User;
 
   constructor(private router: Router, private loginService: LoginService, public dialog: MdDialog) {
   }
@@ -28,8 +30,15 @@ export class LoginComponent implements OnInit {
 
     this.loginService.getUserForEmail(loginValue)
       .subscribe(
-      (data) => {console.log(data.json())}
-    );
+        (data) => {
+          this.user = data.json();
+          if (passwordValue === this.user.password) {
+            this._navigate();
+          } else {
+            this._showError();
+          }
+        }
+      );
 
   }
 
