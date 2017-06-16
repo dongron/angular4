@@ -27,7 +27,7 @@ const appRoutes: Routes = [
     data: {title: 'Places'}
   },
   {
-    path: 'details',
+    path: 'details/:id',
     component: PlacesDetailsComponent,
     data: {title: 'Place details'}
   },

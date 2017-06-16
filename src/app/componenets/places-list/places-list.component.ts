@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {User} from '../../models/user';
 import {LoginService} from '../../services/login.service';
 import {PlacesService} from '../../services/places.service';
@@ -17,7 +18,7 @@ export class PlacesListComponent implements OnInit {
   userPlacesList = [];
   userData: User;
 
-  constructor(private loginService: LoginService, private placesService: PlacesService) {
+  constructor(private router: Router, private loginService: LoginService, private placesService: PlacesService) {
   }
 
   ngOnInit() {
@@ -37,7 +38,11 @@ export class PlacesListComponent implements OnInit {
   }
 
   _details(place) {
-    console.log(place);
+    this._navigate(place);
+  }
+
+  _navigate(place) {
+    this.router.navigate(['/details', place._id]);
   }
 
 }

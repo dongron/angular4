@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {Place} from '../../models/place';
 
 @Component({
   selector: 'app-places-details',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlacesDetailsComponent implements OnInit {
 
-  constructor() { }
+  placeObj;
+
+  constructor(router: Router, private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe((params: Params) => {
+      const placeId = params['id'];
+      console.log(placeId);
+    });
   }
 
 }
