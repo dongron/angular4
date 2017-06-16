@@ -18,7 +18,7 @@ export class LoginService {
   }
 
   getUser() {
-    return this.user || {};
+    return this.user || new User();
   }
 
   setUser(user: User) {
