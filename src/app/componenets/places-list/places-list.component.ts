@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlacesListComponent implements OnInit {
 
+  placesList;
+
   constructor() { }
 
   ngOnInit() {
+
+    this.placesList = [];
+    this.placesList.push({"name": "test"});
   }
 
 }

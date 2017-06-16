@@ -1,6 +1,11 @@
 <p>
   places-list works!
 </p>
+<ul>
+  <li *ngFor="let place of placesList">
+    - {{place.name}}
+  </li>
+</ul>
 <div>
   <a routerLink="/details" routerLinkActive="active">Example redirect</a>
 </div>
