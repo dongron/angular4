@@ -21,10 +21,6 @@ export class LoginComponent implements OnInit {
     this.isError = false;
   }
 
-  _navigateToDetails() {
-    this._navigate();
-  }
-
   _authenticateUser(loginValue, passwordValue) {
     // const userLoginData = this.loginService.getUserForEmail(loginValue);
 
@@ -39,7 +35,6 @@ export class LoginComponent implements OnInit {
           }
         }
       );
-
   }
 
   private _navigate() {
@@ -49,7 +44,6 @@ export class LoginComponent implements OnInit {
   private _showError() {
     this.isError = true;
   }
-
 
 }
 
