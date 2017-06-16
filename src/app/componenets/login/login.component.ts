@@ -23,14 +23,18 @@ export class LoginComponent implements OnInit {
     this._navigate();
   }
 
-  private _authenticateUser(loginValue, passwordValue) {
-    const userLoginData = this.loginService.getUserForEmail(loginValue);
-    console.log('user data from service', userLoginData, loginValue, passwordValue);
-    if (loginValue === userLoginData.login && passwordValue === userLoginData.password) {
-      this._navigate();
-    } else {
-      this._showError();
-    }
+  _authenticateUser(loginValue, passwordValue) {
+    // const userLoginData = this.loginService.getUserForEmail(loginValue);
+
+    this.loginService.getUserForEmail(loginValue).subscribe(
+      data => console.log(data)
+    );
+    // console.log('user data from service', userLoginData, loginValue, passwordValue);
+    // if (loginValue === userLoginData.login && passwordValue === userLoginData.password) {
+    //   this._navigate();
+    // } else {
+    //   this._showError();
+    // }
 
   }
 
@@ -41,7 +45,6 @@ export class LoginComponent implements OnInit {
   private _showError() {
     this.isError = true;
   }
-
 
 
 }
