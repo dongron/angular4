@@ -14,7 +14,7 @@ export class PlacesListComponent implements OnInit {
   ngOnInit() {
 
     this.placesList = [];
-    this.placesList.push({"name": "test"});
+    this.placesList.push({"name": "test","date":"21/11/11"});
   }
 
 }

@@ -1,11 +1,13 @@
 <p>
   places-list works!
 </p>
-<ul>
-  <li *ngFor="let place of placesList">
-    - {{place.name}}
-  </li>
-</ul>
+<md-list>
+  <md-list-item *ngFor="let place of placesList">
+    <md-icon md-list-icon>place</md-icon>
+    <h4 md-line>{{place.name}}</h4>
+    <p md-line>{{place.date}}</p>
+  </md-list-item>
+</md-list>
 <div>
   <a routerLink="/details" routerLinkActive="active">Example redirect</a>
 </div>
