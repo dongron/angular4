@@ -4,3 +4,7 @@
 .input-full-width {
   width: 100%;
 }
+.error {
+  color: red;
+  border: 0.5px red;
+}

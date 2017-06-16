@@ -5,8 +5,8 @@ export class LoginService {
 
   constructor() { }
 
-  getUserForEmail() {
-    return 0;
+  getUserForEmail(email) {
+    return {login: "q@q.q", password: "q"};
   }
 
 
