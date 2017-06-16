@@ -11,6 +11,7 @@ import {Place} from "../../models/place";
 })
 export class PlacesListComponent implements OnInit {
 
+  title = "List of places";
   allPlaces: Place[];
   allPlacesList;
   userPlacesList = [];
@@ -33,9 +34,10 @@ export class PlacesListComponent implements OnInit {
         }
       }
     );
-    // this.userPlacesList = this.placesService.getUsersPlaces(this.userData.email);
-    console.log()
-    // this.placesList.push({"name": "test", "date": "21/11/11"});
+  }
+
+  _details(place) {
+    console.log(place);
   }
 
 }
