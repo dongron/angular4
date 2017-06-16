@@ -26,15 +26,10 @@ export class LoginComponent implements OnInit {
   _authenticateUser(loginValue, passwordValue) {
     // const userLoginData = this.loginService.getUserForEmail(loginValue);
 
-    this.loginService.getUserForEmail(loginValue).subscribe(
-      data => console.log(data)
+    this.loginService.getUserForEmail(loginValue)
+      .subscribe(
+      (data) => {console.log(data.json())}
     );
-    // console.log('user data from service', userLoginData, loginValue, passwordValue);
-    // if (loginValue === userLoginData.login && passwordValue === userLoginData.password) {
-    //   this._navigate();
-    // } else {
-    //   this._showError();
-    // }
 
   }
 

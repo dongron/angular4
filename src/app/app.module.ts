@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core'
 import {RouterModule, Routes} from '@angular/router';
-import {HttpModule} from '@angular/http';
+import {HttpModule, JsonpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './componenets/login/login.component';
@@ -55,6 +55,7 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpModule,
+    JsonpModule,
     BrowserAnimationsModule,
     MaterialModule,
     MdToolbarModule,

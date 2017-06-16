@@ -12,12 +12,7 @@ export class LoginService {
   getUserForEmail(email) {
     const urlString = this.url + email;
     console.log(urlString);
-    return this.http.get(urlString).map(
-        res => {
-          console.log('response',res);
-          res.json();
-        }
-      );
+    return this.http.get(urlString);
   }
 
   getUserForEmailMockup(email) {
