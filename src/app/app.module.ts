@@ -14,6 +14,7 @@ import {NotFoundComponent} from './componenets/not-found/not-found.component';
 import {LoginService} from './services/login.service';
 import {PlacesService} from './services/places.service';
 import {PlaceDetailsService} from './services/place-details.service';
+import {ReservationsService} from './services/reservations.service';
 
 const appRoutes: Routes = [
   {
@@ -65,7 +66,8 @@ const appRoutes: Routes = [
   providers: [
     LoginService,
     PlacesService,
-    PlaceDetailsService
+    PlaceDetailsService,
+    ReservationsService
   ],
   bootstrap: [AppComponent]
 })
