@@ -34,4 +34,14 @@ export class PlacesService {
     );
   }
 
+  getPlaceDetails(id: string) {
+    const urlString = this.url + 'byId/' + id;
+    console.log(urlString);
+    return this.http.get(urlString);
+  }
+
+  updatePlace(newPlace: Place) {
+
+  }
+
 }
