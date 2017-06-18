@@ -2,18 +2,27 @@
   <p>
     Reservation details:
   </p>
-  <md-input-container class="input-full-width">
-    <input mdInput class="" placeholder="email" value="" type="date">
-  </md-input-container>
-  <md-input-container class="input-full-width">
-    <input mdInput class="" placeholder="email" value="" type="number">
-  </md-input-container>
-  <md-input-container class="input-full-width">
-    <input mdInput class="" placeholder="email" value="" type="email">
-  </md-input-container>
+  <div>
+    <md-input-container class="input-full-width">
+      <input mdInput #dateDialogInput class="" placeholder="date" value="" type="date">
+    </md-input-container>
+  </div>
+  <div>
+    <md-input-container class="input-full-width">
+      <input mdInput #longDialogInput class="" placeholder="how long" value="" type="number">
+    </md-input-container>
+  </div>
+  <div>
+    <md-input-container class="input-full-width">
+      <input mdInput #emailDialogInput class="" placeholder="email" value="" type="email">
+    </md-input-container>
+  </div>
 
   <div class="buttons-container">
-    <button md-button>Cancel</button>
-    <button md-button>Save</button>
+    <button md-button (click)="dialogRef.close()">Cancel</button>
+    <button md-button
+            (click)="dialogRef.close({date: dateDialogInput.value, long: longDialogInput.value, email: emailDialogInput.value})">
+      Save
+    </button>
   </div>
 </div>
