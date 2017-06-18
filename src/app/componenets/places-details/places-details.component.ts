@@ -68,7 +68,7 @@ export class PlacesDetailsComponent implements OnInit {
       console.log(result);
       let reservationToAdd = {clientEmail: "", ownerEmail: "", placeName: "", time: new Date(), long: 0};
       reservationToAdd.clientEmail = result.email;
-      reservationToAdd.ownerEmail = this.loginService.getUser().email;
+      reservationToAdd.ownerEmail = this.loginService.getUser().email || this.place.ownerEmail || "none";
       reservationToAdd.placeName = this.place.name;
       reservationToAdd.time = new Date(result.date);
       reservationToAdd.long = Number(result.long);
