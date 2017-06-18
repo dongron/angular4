@@ -6,21 +6,23 @@
     Please log in
   </h1>
 
-  <md-input-container class="input-full-width">
+  <md-input-container class="input-full-width" md-tooltip="*required fields">
     <input mdInput class="" placeholder="email" value="" type="email"
            #loginInput required>
   </md-input-container>
-  <md-input-container class="input-full-width">
+  <md-input-container class="input-full-width" md-tooltip="*required fields">
     <input mdInput placeholder="password" value="" type="password"
            #passwordInput (keyup.enter)="_authenticateUser(loginInput.value, passwordInput.value)" required>
   </md-input-container>
   <h4 class="error"  *ngIf="isError">
     Type correct login and password!
   </h4>
-  <button md-raised-button (click)="_authenticateUser(loginInput.value, passwordInput.value)">
-    Log in
-    <!--<md-icon>done</md-icon>-->
-  </button>
+  <div>
+    <button md-raised-button color="accent" (click)="_authenticateUser(loginInput.value, passwordInput.value)">
+      Log in
+      <!--<md-icon>done</md-icon>-->
+    </button>
+  </div>
 </div>
 
 
