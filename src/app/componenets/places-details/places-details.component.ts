@@ -5,6 +5,7 @@ import {PlacesService} from '../../services/places.service';
 import {ReservationsService} from '../../services/reservations.service';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {ReservationDialogComponent} from '../reservation-dialog/reservation-dialog.component';
+import {LoginService} from '../../services/login.service';
 
 @Component({
   selector: 'app-places-details',
@@ -16,7 +17,7 @@ export class PlacesDetailsComponent implements OnInit {
   place: Place;
   reservations;
 
-  constructor(router: Router, private activatedRoute: ActivatedRoute,
+  constructor(router: Router, private activatedRoute: ActivatedRoute, private loginService: LoginService,
               private placesService: PlacesService, private reservationsService: ReservationsService,
               public dialog: MdDialog) {
   }
@@ -50,7 +51,6 @@ export class PlacesDetailsComponent implements OnInit {
   }
 
   openDialog(reservation) {
-    console.log('res obj on open',reservation);
     const config = new MdDialogConfig();
     const dialogRef = this.dialog.open(ReservationDialogComponent, config);
     if (reservation && reservation.clientEmail && reservation.time && reservation.long) {
@@ -66,13 +66,35 @@ export class PlacesDetailsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-    });
+      let reservationToAdd = {clientEmail: "", ownerEmail: "", placeName: "", time: new Date(), long: 0};
+      reservationToAdd.clientEmail = result.email;
+      reservationToAdd.ownerEmail = this.loginService.getUser().email;
+      reservationToAdd.placeName = this.place.name;
+      reservationToAdd.time = new Date(result.date);
+      reservationToAdd.long = Number(result.long);
 
-    // if(!reservation) {
-    //
-    // } else {
-    //
-    // }
+      if (reservation) {
+
+      } else {
+        this.reservationsService.addReservation(reservationToAdd);
+        // .subscribe(
+        //   reservationRes  => this.reservations.push(reservationRes),
+        //   error =>  console.log(<any>error));
+      }
+    });
+  }
+
+  remove(id) {
+    this.reservationsService.removeReservation(id).subscribe(
+      result => {
+        console.log(result);
+        for (const reservation of this.reservations) {
+          if (reservation['_id'] == id) {
+            this.reservations.splice(reservation, 1);
+          }
+        }
+      }
+    );
   }
 
 }
