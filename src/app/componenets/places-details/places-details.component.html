@@ -8,22 +8,30 @@
 <md-card class="card" *ngFor="let reservation of reservations">
   <md-card-header>
     <div md-card-avatar class="example-header-image"></div>
-    <md-card-title>{{reservation.time.getFullYear()+'-' +(reservation.time.getMonth()+1)+'-'
-      +reservation.time.getDate()+' '
-      +reservation.time.getHours()+':'+(reservation.time.getMinutes()<10?'0':'')+reservation.time.getMinutes()}}
-    </md-card-title>
+    <!--<md-card-title>{{reservation.time.getFullYear() + '-'-->
+      <!--+(reservation.time.getMonth()<10?'0':'') + (reservation.time.getMonth()+1)+'-'-->
+      <!--+(reservation.time.getDate()<10?'0':'') + reservation.time.getDate()+' '-->
+      <!--+(reservation.time.getHours()<10?'0':'') + reservation.time.getHours()+':'-->
+      <!--+(reservation.time.getMinutes()<10?'0':'')+reservation.time.getMinutes()}}-->
+    <!--</md-card-title>-->
     <md-card-subtitle>
-      Reservation by person owning email: {{reservation.clientEmail}} for {{reservation.long}} hours
-    </md-card-subtitle>
+      {{reservation.time.getFullYear() + '-'
+      +(reservation.time.getMonth()<10?'0':'') + (reservation.time.getMonth()+1)+'-'
+      +(reservation.time.getDate()<10?'0':'') + reservation.time.getDate()+' '
+      +(reservation.time.getHours()<10?'0':'') + reservation.time.getHours()+':'
+      +(reservation.time.getMinutes()<10?'0':'')+reservation.time.getMinutes()}}    </md-card-subtitle>
   </md-card-header>
-  <!--<md-card-content>-->
-    <!--<p>-->
-    <!--</p>-->
-  <!--</md-card-content>-->
+  <md-card-content>
+  <p>
+    Reservation by person owning email: {{reservation.clientEmail}} for {{reservation.long}} hours
+  </p>
+  </md-card-content>
   <md-card-actions>
     <button md-button color="accent" (click)="openDialog(reservation)">Edit</button>
     <button md-button md-raised-button color="warn">Delete</button>
   </md-card-actions>
 </md-card>
 
-<button id="floating-button" md-fab routerLink="." (click)="openDialog()"><md-icon>add</md-icon></button>
+<button id="floating-button" md-fab routerLink="." (click)="openDialog()">
+  <md-icon>add</md-icon>
+</button>
