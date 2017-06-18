@@ -8,6 +8,10 @@ import {MdDialogRef} from '@angular/material';
 })
 export class ReservationDialogComponent implements OnInit {
 
+  email;
+  resDateTime;
+  howLong;
+
   constructor(@Optional() public dialogRef: MdDialogRef<ReservationDialogComponent>) { }
 
   ngOnInit() {

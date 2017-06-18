@@ -4,23 +4,23 @@
   </p>
   <div>
     <md-input-container class="input-full-width">
-      <input mdInput #dateDialogInput class="" placeholder="date" value="" type="date">
+      <input mdInput #dateDialogInput class="" placeholder="date and hour" value={{resDateTime}} type="datetime-local">
     </md-input-container>
   </div>
   <div>
     <md-input-container class="input-full-width">
-      <input mdInput #longDialogInput class="" placeholder="how long" value="" type="number">
+      <input mdInput #longDialogInput class="" placeholder="how long" value={{howLong}} type="number">
     </md-input-container>
   </div>
   <div>
     <md-input-container class="input-full-width">
-      <input mdInput #emailDialogInput class="" placeholder="email" value="" type="email">
+      <input mdInput #emailDialogInput class="" placeholder="email" value={{email}} type="email">
     </md-input-container>
   </div>
 
   <div class="buttons-container">
     <button md-button (click)="dialogRef.close()">Cancel</button>
-    <button md-button
+    <button md-button md-raised-button color="primary"
             (click)="dialogRef.close({date: dateDialogInput.value, long: longDialogInput.value, email: emailDialogInput.value})">
       Save
     </button>

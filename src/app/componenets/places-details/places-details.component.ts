@@ -3,7 +3,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Place} from '../../models/place';
 import {PlacesService} from '../../services/places.service';
 import {ReservationsService} from '../../services/reservations.service';
-import {MdDialog, MdDialogRef} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {ReservationDialogComponent} from '../reservation-dialog/reservation-dialog.component';
 
 @Component({
@@ -50,7 +50,20 @@ export class PlacesDetailsComponent implements OnInit {
   }
 
   openDialog(reservation) {
-    const dialogRef = this.dialog.open(ReservationDialogComponent);
+    console.log('res obj on open',reservation);
+    const config = new MdDialogConfig();
+    const dialogRef = this.dialog.open(ReservationDialogComponent, config);
+    if (reservation && reservation.clientEmail && reservation.time && reservation.long) {
+      const dateTime = reservation.time.getFullYear() + '-'
+        + ((reservation.time.getMonth() + 1) < 10 ? '0' : '') + (reservation.time.getMonth() + 1) + '-'
+        + (reservation.time.getDate() < 10 ? '0' : '') + reservation.time.getDate() + 'T'
+        + (reservation.time.getHours() < 10 ? '0' : '') + reservation.time.getHours() + ':'
+        + (reservation.time.getMinutes() < 10 ? '0' : '') + reservation.time.getMinutes();
+      dialogRef.componentInstance.email = reservation.clientEmail;
+      dialogRef.componentInstance.resDateTime = dateTime;
+      dialogRef.componentInstance.howLong = reservation.long;
+    }
+
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
     });
