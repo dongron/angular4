@@ -1,0 +1,8 @@
+reservation-dialog {
+  position: fixed;
+  margin: auto;
+}
+
+.buttons-container{
+  float: right;
+}

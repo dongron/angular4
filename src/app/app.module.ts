@@ -15,6 +15,7 @@ import {LoginService} from './services/login.service';
 import {PlacesService} from './services/places.service';
 import {PlaceDetailsService} from './services/place-details.service';
 import {ReservationsService} from './services/reservations.service';
+import {ReservationDialogComponent} from './componenets/reservation-dialog/reservation-dialog.component';
 
 const appRoutes: Routes = [
   {
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
     LoginComponent,
     PlacesDetailsComponent,
     PlacesListComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ReservationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ const appRoutes: Routes = [
     PlaceDetailsService,
     ReservationsService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ReservationDialogComponent]
 })
 export class AppModule {
 }

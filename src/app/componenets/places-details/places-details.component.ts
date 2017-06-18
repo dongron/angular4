@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Optional} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Place} from '../../models/place';
 import {PlacesService} from '../../services/places.service';
 import {ReservationsService} from '../../services/reservations.service';
+import {MdDialog, MdDialogRef} from '@angular/material';
+import {ReservationDialogComponent} from '../reservation-dialog/reservation-dialog.component';
 
 @Component({
   selector: 'app-places-details',
@@ -15,7 +17,8 @@ export class PlacesDetailsComponent implements OnInit {
   reservations;
 
   constructor(router: Router, private activatedRoute: ActivatedRoute,
-              private placesService: PlacesService, private reservationsService: ReservationsService) {
+              private placesService: PlacesService, private reservationsService: ReservationsService,
+              public dialog: MdDialog) {
   }
 
   ngOnInit() {
@@ -44,7 +47,20 @@ export class PlacesDetailsComponent implements OnInit {
         this.reservations = results;
       }
     );
+  }
 
+  openDialog(reservation) {
+    const dialogRef = this.dialog.open(ReservationDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
+
+    // if(!reservation) {
+    //
+    // } else {
+    //
+    // }
   }
 
 }
+
