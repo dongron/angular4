@@ -73,13 +73,20 @@ export class PlacesDetailsComponent implements OnInit {
       reservationToAdd.time = new Date(result.date);
       reservationToAdd.long = Number(result.long);
 
+      console.log('res to add', reservationToAdd);
       if (reservation) {
+        console.log('with reser');
 
       } else {
-        this.reservationsService.addReservation(reservationToAdd);
-        // .subscribe(
-        //   reservationRes  => this.reservations.push(reservationRes),
-        //   error =>  console.log(<any>error));
+        this.reservationsService.addReservation(reservationToAdd)
+          .subscribe(
+            reservationRes => {
+              console.log('result', reservationRes);
+              this.reservations.push(reservationToAdd);
+            },
+            error => {
+              console.log(<any>error);
+            });
       }
     });
   }
