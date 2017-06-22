@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Headers} from '@angular/http';
 import {Place} from '../models/place';
 import {User} from '../models/user';
+import {Reservation} from '../models/reservation';
 
 @Injectable()
 export class ReservationsService {
@@ -25,14 +26,25 @@ export class ReservationsService {
     return this.getAllReservations().filter(this.isReservationForPlace.bind(this, placeName));
   }
 
-  addReservation(reservation) {
+  addReservation(reservation: Reservation) {
+    const newReservation = reservation.toJSON();
     const urlString = this.url + 'add';
     const headers = new Headers({'Content-Type': 'application/json'});
     const options = new RequestOptions({headers: headers});
     console.log(urlString);
-    console.log('service, posting', reservation);
-    return this.http.post(urlString, reservation, options)
-      .map(response => console.log(response))
+    console.log('service, posting parsed', newReservation);
+    return this.http.post(urlString, JSON.stringify(newReservation), options)
+      .map(response => console.log('add response', response))
+      .catch(this.handleError);
+  }
+
+  modifyReservation(changedReservation) {
+    const urlString = this.url + 'update';
+    const headers = new Headers({'Content-Type': 'application/json'});
+    const options = new RequestOptions({headers: headers});
+    console.log('service, modifying reservation', changedReservation);
+    return this.http.put(urlString, JSON.stringify(changedReservation), options)
+      .map(response => console.log('update response', response))
       .catch(this.handleError);
   }
 

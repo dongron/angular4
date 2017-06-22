@@ -63,4 +63,16 @@ export class Reservation {
     this._long = value;
   }
 
+  toJSON() {
+    return {
+      _id: this._id,
+      __v: this._v,
+      clientEmail: this._clientEmail,
+      ownerEmail: this._ownerEmail,
+      placeName: this._placeName,
+      time: this._time,
+      long: this._long
+    }
+  }
+
 }

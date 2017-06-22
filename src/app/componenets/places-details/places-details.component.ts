@@ -1,6 +1,7 @@
 import {Component, OnInit, Optional} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Place} from '../../models/place';
+import {Reservation} from '../../models/reservation';
 import {PlacesService} from '../../services/places.service';
 import {ReservationsService} from '../../services/reservations.service';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
@@ -66,7 +67,10 @@ export class PlacesDetailsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      let reservationToAdd = {clientEmail: "", ownerEmail: "", placeName: "", time: new Date(), long: 0};
+      if (!result) return false;
+
+      let reservationToAdd = new Reservation();
+      // let reservationToAdd = {clientEmail: "", ownerEmail: "", placeName: "", time: new Date(), long: 0};
       reservationToAdd.clientEmail = result.email;
       reservationToAdd.ownerEmail = this.loginService.getUser().email || this.place.ownerEmail || "none";
       reservationToAdd.placeName = this.place.name;
@@ -76,7 +80,20 @@ export class PlacesDetailsComponent implements OnInit {
       console.log('res to add', reservationToAdd);
       if (reservation) {
         console.log('with reser');
-
+        reservationToAdd.id = reservation._id;
+        this.reservationsService.modifyReservation(reservationToAdd)
+          .subscribe(
+            reservationRes => {
+              console.log('put result', reservationRes);
+              for (const res of this.reservations) {
+                console.log('-', res._id, reservationToAdd.id);
+                if (res._id === reservationToAdd.id) {
+                  this.reservations.splice(this.reservations.indexOf(res), 1);
+                }
+              }
+              this.reservations.push(reservationToAdd);
+            }
+          );
       } else {
         this.reservationsService.addReservation(reservationToAdd)
           .subscribe(
