@@ -4,3 +4,9 @@
 .button-placeholder {
   width: 120px;
 }
+.spacer {
+  flex: 1 1 auto;
+}
+.link-button {
+  font-size: 50px;
+}

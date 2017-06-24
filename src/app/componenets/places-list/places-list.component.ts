@@ -45,4 +45,8 @@ export class PlacesListComponent implements OnInit {
     this.router.navigate(['/details', place._id]);
   }
 
+  _logOut() {
+    this.router.navigate(['/login', {}]);
+  }
+
 }
