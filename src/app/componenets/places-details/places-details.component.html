@@ -1,5 +1,5 @@
 <md-toolbar>
-  <a class="link-button-container"><md-icon md-list-icon class="link-button">chevron_left</md-icon></a>
+  <a class="link-button-container" (click)="_goBack()"><md-icon md-list-icon class="link-button">chevron_left</md-icon></a>
   <span class="back-placeholder"></span>
   <span>Places details for:</span>
   <span>{{place.name}} {{place.city}}</span>

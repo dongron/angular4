@@ -18,7 +18,7 @@ export class PlacesDetailsComponent implements OnInit {
   place: Place;
   reservations;
 
-  constructor(router: Router, private activatedRoute: ActivatedRoute, private loginService: LoginService,
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private loginService: LoginService,
               private placesService: PlacesService, private reservationsService: ReservationsService,
               public dialog: MdDialog) {
   }
@@ -119,6 +119,14 @@ export class PlacesDetailsComponent implements OnInit {
         }
       }
     );
+  }
+
+  _goBack() {
+    this._navigate();
+  }
+
+  _navigate() {
+    this.router.navigate(['/places', {}]);
   }
 
 }
