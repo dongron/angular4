@@ -129,5 +129,9 @@ export class PlacesDetailsComponent implements OnInit {
     this.router.navigate(['/places', {}]);
   }
 
+  _logOut() {
+    this.router.navigate(['/login', {}]);
+  }
+
 }
 
