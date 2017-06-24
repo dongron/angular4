@@ -3,3 +3,16 @@
   bottom: 9px;
   right: 9px;
 }
+.link-button-container {
+  position: fixed;
+  left: 0px;
+  padding-top: 6px;
+  margin-left: -10px;
+}
+.link-button {
+  font-size: 50px;
+}
+.back-placeholder {
+  width: 20px;
+  margin-right: 10px;
+}
